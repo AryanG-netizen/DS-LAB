@@ -1,0 +1,95 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#define MAX 3
+
+int queue[MAX];
+int front = -1, rear = -1;
+int insert();
+int delete();
+int display();
+
+int main() {
+    int answer;
+    
+    
+    while (true) {
+        printf("1 - INSERT. 2 - DELETE. 3 - DISPLAY. 4 - EXIT CHOOSE YOUR NUMBER\n");
+    scanf("%d", &answer);
+    switch(answer){
+        case 1:
+        insert();
+        break;
+        case 2:
+        printf("%d is deleted\n", delete()) ;
+        break;
+        case 3:
+        display();
+        break;
+        case 4:
+        exit(0);
+        
+    }
+    }
+    return 0;
+    
+}
+
+int insert() {
+    int temp;
+    
+    
+    if (rear == -1) {
+        front = 0;
+        rear = 0;
+        printf("asd");
+    }
+    else{
+        if (rear == (MAX - 1)) {
+              printf("Cannot enter any more variables\n");
+              return 0;
+        }
+        else{
+         rear += 1;
+        }
+    }
+    printf("Please enter the element\n");
+    scanf("%d", &temp);
+    queue[rear] = temp;
+    return temp;
+}
+
+int delete() {
+    int temp;
+    if (front == rear) {
+        front = -1;
+        temp = rear;
+        rear = -1;
+        printf("Can't delete any more variables. Its empty brav\n");
+        return queue[temp];
+        
+    }
+    else{
+        front += 1;
+        return queue[front - 1];
+        
+    }
+    printf("%d is the front and %d is the rear", front, rear);
+    
+    
+}
+
+int display() {
+    if (front == -1 && rear == -1) {
+      printf("There is nothing to display\n");
+    }
+    else {
+        
+        for(int i = front; i <= rear; i++) {
+            printf("%d  \t", queue[i]);
+         }
+       printf("\n");
+    }
+  
+}
