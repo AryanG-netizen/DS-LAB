@@ -1,0 +1,54 @@
+#include <stdio.h>
+//factorial using recursion
+int fact(int n);
+int fibo(int n);
+void hanoi(int n, char a, char b, char c);
+int main (void) {
+    printf("Yo my shlime\n");
+    printf("Final factorial of 5 is %d\n", fact(5));
+    printf("Final fibonnaci series of 5 is assuming fibonacci series starts from 0 %d\n", fibo(5));
+    printf("Enter the number of rings, the names for the start auxilliary and end rings ");
+    int rings;
+    char a,b,c;
+    scanf("%d %c %c %c", &rings, &a, &b, &c);
+    hanoi(rings, a, b, c);
+    }
+
+int fact(int n){
+    printf("Hello this is the factorial answer\n");
+    if (n==1) {
+        return 1;
+    } 
+    else {
+        return(fact(n-1) * n );
+    }
+}
+
+int fibo(int n) {
+    if (n==0) {
+        return 0;
+    }
+    else if (n==1) {
+        return 1;
+    }
+    return fibo(n-1) + fibo(n-2);
+    }
+
+
+void hanoi(int n, char start, char auxilliary, char end){
+    if(n ==1) {
+        printf("Ring %d from %c to %c d", n, start, end);
+        printf("\n");
+
+    }
+    else {
+        hanoi(n-1,  start, end, auxilliary);
+        printf("Ring %d from %c to %c", n, start, end);
+        printf("\n");
+        hanoi(n-1, auxilliary, start, end);
+    }
+    }
+    
+Output: 
+
+
